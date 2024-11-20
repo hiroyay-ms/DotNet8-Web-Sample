@@ -1,5 +1,6 @@
 using System.Linq;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.OpenApi;
 using Microsoft.EntityFrameworkCore;
 
 using Api.Data;
@@ -9,7 +10,9 @@ public static class ProductsEndpoints
 {
     public static void RegisterProductsEndpoints(this WebApplication app)
     {
-        app.MapGet("/categories", GetProductCategories);
+        app.MapGet("/categories", GetProductCategories)
+            .WithName("GetProductCategories")
+            .WithOpenApi();
     }
 
     static async Task<IResult> GetProductCategories(AdventureWorksContext db)

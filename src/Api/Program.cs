@@ -1,3 +1,4 @@
+using Microsoft.OpenApi.Models;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,18 +12,21 @@ var connectionString = builder.Configuration["SQL_CONNECTION_STRING"] ?? throw n
 builder.Services.AddDbContext<AdventureWorksContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddOpenApiDocument(config =>
+builder.Services.AddSwaggerGen(options =>
 {
-    config.Title = "AdventureWorks API";
-    config.Version = "v1";
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "AdventureWorks API",
+        Version = "v1"
+    });
 });
 
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseOpenApi();
-    app.UseSwaggerUi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.RegisterProductsEndpoints();
