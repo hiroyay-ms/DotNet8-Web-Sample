@@ -13,7 +13,6 @@ builder.Services.AddDbContext<AdventureWorksContext>(options => options.UseSqlSe
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApiDocument(config =>
 {
-    config.DocumentName = "AdventureWorksAPI";
     config.Title = "AdventureWorks API";
     config.Version = "v1";
 });
