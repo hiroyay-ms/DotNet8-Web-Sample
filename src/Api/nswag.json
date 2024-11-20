@@ -1,0 +1,12 @@
+{
+    "runtime": "net8.0",
+    "documentGenerator": {
+        "aspnetCoreToOpenApi": {
+            "output": "openapi.json",
+            "outputType": "OpenApi3",
+            "assemblyPaths": [
+                "bin/$(Configuration)/net8.0/Api.dll"
+            ]
+        }
+    }
+}
