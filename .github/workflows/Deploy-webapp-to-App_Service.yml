@@ -5,15 +5,21 @@ on:
     inputs:
       resourceGroup:
         description: 'リソース グループ名'
+        default: 'rg-test-3'
         required: true
         type: string
       webAppName:
         description: 'Web アプリ名'
+        default: 'app-test-3'
         required: true
         type: string
 
 env:
   APP_PATH: './src/Web'
+
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   build:
