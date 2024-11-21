@@ -36,7 +36,7 @@ jobs:
         run: dotnet publish ${{ env.APP_PATH }} -c Release -o ${{ env.APP_PATH }}/webapp
       
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: webapp
           path: ${{ env.APP_PATH }}/webapp
@@ -57,7 +57,7 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       
       - name: Download artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: webapp
       
