@@ -20,3 +20,84 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+h2.productCategory
+{
+  color: #00bcd4;
+}
+
+div.filter a {
+  display: inline-block;
+  width: 200px;
+  padding: 5px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background: #00bcd4;
+  color: #fff;
+  margin: 5px 0;
+  text-align: center;
+  text-decoration: none;
+}
+
+div.filter a:hover {
+  background: #fff;
+  color: #00bcd4;
+  border: 1px solid #00bcd4;
+}
+
+table.index {
+  border-collapse: collapse;
+  border-spacing: 0;
+  display: block;
+  overflow-y: scroll;
+  height: calc(100vh*0.7)
+}
+
+table.index thead th {
+  background-color: #00bcd4;
+  color: #fff;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+table.index th:first-child {
+  border-radius: 5px 0 0 0;
+}
+
+table.index th:last-child {
+  border-radius: 0 5px 0 0;
+}
+
+table.index tr {
+  border-bottom: solid 1px #ddd;
+}
+
+table.index tr:last-child {
+  border-bottom: 2px solid #00bcd4;
+}
+
+table.index tr:hover {
+  background-color: #00bcd4;
+  color: white;
+}
+
+table.index tr:hover a {
+  color: white;
+  font-weight: bold;
+}
+
+table.index th, td {
+  text-align: left;
+  padding: 15px 5px;
+}
+
+table.index th:first-child {
+  text-align: center;
+}
+
+table.index td:first-child {
+  text-align: center;
+}

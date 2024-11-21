@@ -1,0 +1,33 @@
+@page
+@model Web.Pages.Products.IndexModel
+
+@{
+    ViewData["Title"] = "Product Category";
+}
+@using System.Text.Json.Nodes;
+
+
+@{
+    var jsonNode = JsonNode.Parse(Model.JsonData);
+
+    <div>
+        <table>
+            <thead>
+                <th width="100">Id</th>
+                <th width="300">Category</th>
+                <th width="500">SubCategory</th>
+                <th width="200">Products</th>
+            </thead>
+            
+            @foreach (var c in jsonNode.AsArray())
+            {
+                <tr>
+                    <td>@c["ProductCategoryID"].ToString()</td>
+                    <td>@c["Category"].ToString()</td>
+                    <td>@c["SubCategory"].ToString()</td>
+                    <td>@c["ProductCount"].ToString()</td>
+                </tr>
+            }
+        </table>
+    </div>
+}
