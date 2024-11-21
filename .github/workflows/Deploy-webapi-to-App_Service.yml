@@ -44,7 +44,7 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: webapp
+          name: webapi
           path: ${{ env.APP_PATH }}/webapi
 
   deploy:
