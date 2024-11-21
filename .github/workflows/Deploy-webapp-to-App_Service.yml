@@ -33,7 +33,7 @@ jobs:
         run: dotnet build ${{ env.APP_PATH }} -c Release
       
       - name: Publish with dotnet
-        uses: dotnet publish ${{ env.APP_PATH }} -c Release -o ${{ env.APP_PATH }}/webapp
+        run: dotnet publish ${{ env.APP_PATH }} -c Release -o ${{ env.APP_PATH }}/webapp
       
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
