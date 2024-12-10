@@ -1,0 +1,33 @@
+@page
+@model Web.Pages.Users.IndexModel
+@{
+    ViewData["Title"] = "Product Category";
+}
+
+<form method="get">
+    <div>
+        <label for="user1">id-aw-saleslt</label>
+        <input type="radio" id="user1" name="userid" value="id-aw-saleslt" />
+        <label for="user2">id-aw-pubs</label>
+        <input type="radio" id="user2" name="userid" value="id-aw-pubs" />
+        <br />
+
+        <label for="schema">SalesLT</label>
+        <input type="radio" id="schema1" name="schema" value="SalesLT" />
+        <label for="schema">Pubs</label>
+        <input type="radio" id="schema2" name="schema" value="Pubs" />
+        <br />
+
+        <input type="submit" value="Submit" />
+    </div>
+
+    <br />
+
+    <p>Selected: @ViewData["connection"]</p>
+    <p>ConnectionString: @ViewData["connectionString"]</p>
+    <p>Query: @ViewData["query"]</p>
+
+    <br />
+
+    <p>@ViewData["json"]</p>
+</form>
