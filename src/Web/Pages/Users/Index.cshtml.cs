@@ -34,7 +34,7 @@ public class IndexModel : PageModel
         ViewData["connection"] = $"User Id: {userid}; SChema: {schema}";
 
         var serverName = _configuration.GetValue<string>("SQL_SERVER_NAME") ?? throw new InvalidOperationException("SQL_SERVER_NAME not found in configuration.");
-        var connectionString = $"Server=tcp:{serverName}.database.windows.net;Authentication=Active Directory Default; Database=AdventureWorksLT;User Id={userid};";
+        var connectionString = $"Server=tcp:{serverName}.database.windows.net,1433;Initial Catalog=AdventureWorksLT;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication=Active Directory Default;User Id={userid}"
 
         _logger.LogInformation($"Connection String: {connectionString}");
 
