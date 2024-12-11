@@ -22,7 +22,7 @@ public class IndexModel : PageModel
     }
 
     [BindProperty(SupportsGet = true)]
-    public string? userid {get; set;} = "id-aw-saleslt";
+    public string? userid {get; set;} = "1898c173-e5f6-468f-849f-b0356b897c18";
 
     [BindProperty(SupportsGet = true)]
     public string? schema { get; set; } = "SalesLT";
