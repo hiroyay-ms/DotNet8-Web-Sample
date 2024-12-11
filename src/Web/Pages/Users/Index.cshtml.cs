@@ -52,35 +52,39 @@ public class IndexModel : PageModel
 
         ViewData["query"] = query;
 
-        
-        using (var connection = new SqlConnection(connectionString))
-        {
-            await connection.OpenAsync();
-
-            using (var command = new SqlCommand(query, connection))
+        try {
+            using (var connection = new SqlConnection(connectionString))
             {
-                using (var reader = await command.ExecuteReaderAsync())
+                await connection.OpenAsync();
+
+                using (var command = new SqlCommand(query, connection))
                 {
-                    var data = new List<object>();
-                    while (await reader.ReadAsync())
+                    using (var reader = await command.ExecuteReaderAsync())
                     {
-                        var row = new Dictionary<string, object>();
-                        for (int i = 0; i < reader.FieldCount; i++)
+                        var data = new List<object>();
+                        while (await reader.ReadAsync())
                         {
-                            row[reader.GetName(i)] = reader.GetValue(i);
+                            var row = new Dictionary<string, object>();
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                row[reader.GetName(i)] = reader.GetValue(i);
+                            }
+                            data.Add(row);
                         }
-                        data.Add(row);
+
+                        var options = new JsonSerializerOptions
+                        {
+                            Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
+                            WriteIndented = true
+                        };
+
+                        ViewData["json"] = JsonSerializer.Serialize(data, options);
                     }
-
-                    var options = new JsonSerializerOptions
-                    {
-                        Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
-                        WriteIndented = true
-                    };
-
-                    ViewData["json"] = JsonSerializer.Serialize(data, options);
                 }
             }
+        } catch (Exception ex) {
+            _logger.LogError(ex, "An error occurred while executing the query.");
+            ViewData["json"] = $"An error occurred while executing the query. {ex.Message}";
         }
     }
 }
