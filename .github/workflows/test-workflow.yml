@@ -17,4 +17,4 @@ jobs:
 
       - name: Run test
         run: |
-          echo "${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          echo ${{ secrets.AZURE_SUBSCRIPTION_ID }}
