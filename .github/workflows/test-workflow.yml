@@ -17,12 +17,12 @@ jobs:
 
       - name: Install Azure CLI
         run: |
-          apt-get update
-          apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
-          mkdir -p /etc/apt/keyrings
+          sudo apt-get update
+          sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+          sudo mkdir -p /etc/apt/keyrings
           curl -sLS https://packages.microsoft.com/keys/microsoft.asc |
-              gpg --dearmor | tee /etc/apt/keyrings/microsoft.gpg > /dev/null
-          chmod go+r /etc/apt/keyrings/microsoft.gpg
+              gpg --dearmor | sudo tee /etc/apt/keyrings/microsoft.gpg > /dev/null
+          sudo chmod go+r /etc/apt/keyrings/microsoft.gpg
           AZ_DIST=$(lsb_release -cs)
           echo "Types: deb
           URIs: https://packages.microsoft.com/repos/azure-cli/
@@ -30,8 +30,8 @@ jobs:
           Components: main
           Architectures: $(dpkg --print-architecture)
           Signed-by: /etc/apt/keyrings/microsoft.gpg" | sudo tee /etc/apt/sources.list.d/azure-cli.sources
-          apt-get update
-          apt-get install azure-cli
+          sudo apt-get update
+          sudo apt-get install azure-cli
 
       - name: Login to Azure
         uses: azure/login@v2
