@@ -3,36 +3,7 @@
 @{
     ViewData["Title"] = "Upload a blob with .NET";
 }
-@using System.Text.Json.Nodes;
 
 <h2>Upload id-aw-pubs blob with .NET</h2>
 
-@{
-    var jsonNode = JsonNode.Parse(Model.JsonData);
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Product Id</th>
-                <th>Product Name</th>
-                <th>Product Number</th>
-                <th>Color</th>
-                <th>List Price</th>
-                <th>Sell Start Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var p in jsonNode.AsArray())
-            {
-                <tr>
-                    <td>@p["ProductId"].ToString()</td>
-                    <td>@p["Name"].ToString()</td>
-                    <td>@p["ProductNumber"].ToString()</td>
-                    <td>@p["Color"].ToString()</td>
-                    <td>@p["ListPrice"].ToString()</td>
-                    <td>@p["SellStartDate"].ToString()</td>
-                </tr>
-            }
-        </tbody>
-    </table>
- }
+<p>@ViewData["message"]</p>

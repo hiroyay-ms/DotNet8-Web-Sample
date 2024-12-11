@@ -55,12 +55,6 @@ public class IndexModel : PageModel
 
         blobClient.Upload(BinaryData.FromString(csv.ToString()), overwrite: true);
 
-        var options = new JsonSerializerOptions
-        {
-            Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
-            WriteIndented = true
-        };
-
-        JsonData = JsonSerializer.Serialize(data, options);
+        ViewData["message"] = $"The file was successfully uploaded on blob storage with name {filename}";
     }
 }
