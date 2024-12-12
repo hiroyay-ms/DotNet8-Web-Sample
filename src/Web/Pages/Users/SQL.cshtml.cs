@@ -38,6 +38,7 @@ public class SqlModel : PageModel
         ViewData["connection"] = $"User Id: {userid}; SChema: {schema}";
         
         //var connectionString =  string.Format(_configuration.GetValue<string>("SQL_CONNECTION_STRING") + "User Id={0}", userid) ?? throw new InvalidOperationException("Connection string 'SQL_CONNECTION_STRING' not found.");
+        var serverName = _configuration.GetValue<string>("SQL_SERVER_NAME") ?? throw new InvalidOperationException("SQL_SERVER_NAME not found in configuration.");
         var connectionString = $"Server=tcp:{serverName}.database.windows.net,1433;Initial Catalog=AdventureWorksLT;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         var query = string.Empty;
