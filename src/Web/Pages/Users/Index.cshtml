@@ -1,8 +1,17 @@
 @page
 @model Web.Pages.Users.IndexModel
 @{
-    ViewData["Title"] = "User-Assigned Managed Identity";
+    ViewData["Title"] = "User-Assigned Managed Identity -SQL";
 }
+
+<div style="display: flex; flex-wrap: wrap; width: 400px;">
+    <div style="width: clac(100% /2); padding: 20px 10px; text-align: center;">
+        <span>データベース</span>
+    </div>
+    <div style="width: clac(100% /2); padding: 20px 10px; text-align: center;">
+        <a href="./Blob"><span>Blob ストレージ</span></a>
+    </div>
+</div>
 
 <form method="get">
     <div>
