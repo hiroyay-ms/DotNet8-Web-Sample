@@ -38,8 +38,8 @@ public class BlobModel : PageModel
             var storageAccountName = System.Environment.GetEnvironmentVariable("STORAGE_ACCOUNT_NAME") ?? throw new InvalidOperationException("Connection string 'STORAGE_ACCOUNT_NAME' not found.");
             DefaultAzureCredential credential = new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = userId });
 
-            BlobServiceClient blobServiceClient = new BlobServiceClient(new System.Uri($"https://{storageAccountName}.blob.core.windows.net"), credential);
-            BlobContainerClient container = blobServiceClient.GetBlobContainerClient(containerName);
+            //BlobServiceClient blobServiceClient = new BlobServiceClient(new System.Uri($"https://{storageAccountName}.blob.core.windows.net"), credential);
+            BlobContainerClient container = new BlobContainerClient(new System.Uri($"https://{storageAccountName}.blob.core.windows.net/{containerName}"), credential);
 
             BlobClient blobClient = container.GetBlobClient(filename);
 
