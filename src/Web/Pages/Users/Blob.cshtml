@@ -6,10 +6,35 @@
 
 <div style="display: flex; flex-wrap: wrap; width: 400px;">
     <div style="width: clac(100% /2); padding: 20px 10px; text-align: center;">
-        <a asp-area="Users" asp-page="Index"><span>データベース</span></a>
+        <a asp-page="Index"><span>データベース</span></a>
     </div>
     <div style="width: clac(100% /2); padding: 20px 10px; text-align: center;">
         <span>Blob ストレージ</span>
     </div>
 </div>
 
+<form method="get">
+    <div>
+        <label for="user1">uaid-test-3_0</label>
+        <input type="radio" id="user1" name="userId" value="1898c173-e5f6-468f-849f-b0356b897c18" />
+        <label for="user2">uaid-test-3_1</label>
+        <input type="radio" id="user2" name="userId" value="0d14cc99-e6b4-485f-87c9-84dcda993841" />
+        <br />
+
+        <label for="container">contents</label>
+        <input type="radio" id="container1" name="containerName" value="contents" />
+        <label for="container">Pubs</label>
+        <input type="radio" id="container2" name="containerName" value="output-from-web" />
+        <br />
+
+        <input type="submit" value="Submit" />
+    </div>
+
+    <br />
+
+    <p>Selected: @ViewData["connection"]</p>
+
+    <br />
+
+    <p>@ViewData["message"]</p>
+</form>
