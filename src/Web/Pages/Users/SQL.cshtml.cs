@@ -37,7 +37,7 @@ public class SqlModel : PageModel
 
         ViewData["connection"] = $"User Id: {userid}; SChema: {schema}";
         
-        var connectionString =  _configuration.GetValue<string>("SQL_CONNECTION_STRING") ?? throw new InvalidOperationException("Connection string 'SQL_CONNECTION_STRING' not found.");
+        var connectionString =  string.Format(_configuration.GetValue<string>("SQL_CONNECTION_STRING") + "User Id={0}", userid) ?? throw new InvalidOperationException("Connection string 'SQL_CONNECTION_STRING' not found.");
 
         var query = string.Empty;
         if (schema == "SalesLT") {
