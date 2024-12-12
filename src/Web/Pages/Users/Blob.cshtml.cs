@@ -32,7 +32,7 @@ public class BlobModel : PageModel
             return;
         }
 
-        var filename = $"HelloWorld_{DateTime.Now.ToString("yyyyMMddHHmm")}_web.csv";
+        var filename = $"HelloWorld_{DateTime.Now.ToString("yyyyMMddHHmm")}_web.txt";
 
         try {
             var storageAccountName = System.Environment.GetEnvironmentVariable("STORAGE_ACCOUNT_NAME") ?? throw new InvalidOperationException("Connection string 'STORAGE_ACCOUNT_NAME' not found.");
